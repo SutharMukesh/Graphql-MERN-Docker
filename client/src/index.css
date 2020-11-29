@@ -1,4 +1,98 @@
 body {
-  background-color: #eeeeee;
+  background-color: #272822;
   font-family: 'Jetbrains Mono', 'Arial Narrow', Arial, sans-serif;
+}
+
+.App h1{
+  color:#F92672;
+  text-align: center;
+  justify-content: center;
+}
+.App{
+  padding: 0px;
+  box-sizing: border-box;
+  width: 60%;
+  height: 100%;
+}
+
+#book-list{
+  padding-right: 40px;
+}
+
+#book-list li{
+  padding: 10px;
+  display: inline-block;
+  border: 1px solid #3E3D32;
+  background: #3E3D32;
+  border-radius: 5px;
+  margin: 5px;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.3);
+  cursor: pointer;
+  color:#66C9BF;
+}
+
+form{
+  background:#3E3D32;
+  padding:10px;
+  width: 25%;
+  left: 0;
+  bottom: 0;
+  position: fixed;
+  border-radius: 4px;
+  color: #66C9BF;
+}
+
+form .field{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+form label{
+  text-align: right;
+}
+form select,form input{
+  /* padding: 5px; */
+  box-sizing: border-box;
+}
+form button{
+  border-radius: 50%;
+  color: #3E3D32;
+  font-size: 2em;
+  border: 0;
+  padding: 0 10px;
+  background: #F92672;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+}
+
+#book-details{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background:#3E3D32;
+  overflow: auto;
+  box-shadow: -2px -3px 5px rgba(0,0,0,0.3);
+  box-sizing: border-box;
+  color:#66C9BF;
+  padding: 30px;
+}
+
+input{
+  background-color: #272822;
+  color: #66C9BF;
+}
+
+select{
+  background-color:#272822;
+  color: #66C9BF;
+}
+
+
+option{
+  background-color:#272822;
+  color: #66C9BF;
 }

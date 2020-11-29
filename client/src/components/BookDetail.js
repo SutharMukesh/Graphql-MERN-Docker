@@ -10,9 +10,10 @@ function BookDetails(props) {
 
     return (
         <div id="book-details">
-            <h3>{data.book.name}</h3>
-            <h5>Written by: {data.book.author.name}</h5>
-            <p>{data.book.author.name} also wrote</p>
+            <h2>{data.book.name}</h2>
+            <h3>{data.book.genre}</h3>
+            <h3>{data.book.author.name}</h3>
+            <p>{data.book.author.name} also wrote </p>
             <ul>
                 {data.book.author.books.map(book => {
                     return (<li>{book.name},{book.genre}</li>)

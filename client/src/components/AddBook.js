@@ -23,18 +23,24 @@ function AddBook() {
 
     return (
         <form id="add-book" onSubmit={submitForm}>
-            <label>Book Name:</label>
-            <input type="text" onChange={(e) => setName(e.target.value)} /><br />
-            <label>Genre:</label>
-            <input type="text" onChange={(e) => setGenre(e.target.value)} /><br />
-            <label>Author Name:</label>
-            <select type="text" onChange={(e) => setAuthorId(e.target.value)}>
-                <option style={{ display: "none" }}></option>
-                {data.authors.map(author => {
-                    return (<option key={author.id} value={author.id}>{author.name}</option>)
-                })}
-            </select>
-            <button>Submit</button>
+            <div class="field">
+                <label>Book Name:</label>
+                <input type="text" onChange={(e) => setName(e.target.value)} />
+            </div>
+            <div class="field">
+                <label>Genre:</label>
+                <input type="text" onChange={(e) => setGenre(e.target.value)} />
+            </div>
+            <div class="field">
+                <label>Author Name:</label>
+                <select type="text" onChange={(e) => setAuthorId(e.target.value)}>
+                    <option style={{ display: "none" }}></option>
+                    {data.authors.map(author => {
+                        return (<option key={author.id} value={author.id}>{author.name}</option>)
+                    })}
+                </select>
+            </div>
+            <button>+</button>
         </form >
     );
 }

@@ -9,8 +9,8 @@ function BookList() {
     if (error) return <p>Error :(</p>;
 
     return (
-        <div id="book-list">
-            <ul >
+        <div >
+            <ul id="book-list" >
                 {data.books.map(book => {
                     return (<li key={book.id} onClick={(e) => setSelectedBook(book.id)}>{book.name}</li>)
                 })}
