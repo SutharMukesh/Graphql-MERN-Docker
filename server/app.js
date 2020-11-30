@@ -3,14 +3,17 @@ const { graphqlHTTP } = require("express-graphql");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const schema = require("./schema/schema");
+require('dotenv').config()
 
 const app = express();
-const PORT = 9090;
+const PORT = process.env.PORT;
 
 // Allow cross origin requests
 app.use(cors());
 
-mongoose.connect("mongodb://localhost:27017/booksDb", { useNewUrlParser: true, useUnifiedTopology: true })
+const mongoUrl = (process.env.NODE_ENV === "production") ? "mongo:27017" : process.env.mongourl;
+
+mongoose.connect(`mongodb://${mongoUrl}/booksDb`, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connection.once('open', () => {
     console.log("connected to database")
 })

@@ -2,8 +2,10 @@ import BookList from "./components/BookList"
 import AddBook from "./components/AddBook"
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
+const serverUrl = (process.env.NODE_ENV === "production") ? process.env.REACT_APP_PROD_SERVER_URL : process.env.REACT_APP_DEV_SERVER_URL;
+
 const client = new ApolloClient({
-  uri: "http://localhost:9090/graphql",
+  uri: `${serverUrl}/graphql`,
   cache: new InMemoryCache()
 })
 
