@@ -18,11 +18,11 @@ function AddAuthor() {
     const [addAuthor] = useMutation(addAuthorMutation);
     return (
         <form id="add-author" onSubmit={submitForm}>
-            <div class="field">
+            <div className="field">
                 <label>Author Name:</label>
                 <input type="text" onChange={(e) => setName(e.target.value)} />
             </div>
-            <div class="field">
+            <div className="field">
                 <label>Age:</label>
                 <input type="number" onChange={(e) => setAge(Number(e.target.value))} />
             </div>

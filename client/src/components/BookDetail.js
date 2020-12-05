@@ -1,27 +1,35 @@
 import { useQuery } from "@apollo/client";
-import { getBookDetailsQuery } from "../queries/queries"
-import  React from "react";
+import { getBookDetailsQuery } from "../queries/queries";
+import React from "react";
 
 function BookDetails(props) {
-    const { loading, error, data } = useQuery(getBookDetailsQuery, {
-        variables: { id: props.bookid }
-    });
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error :(</p>;
+	const { loading, error, data } = useQuery(getBookDetailsQuery, {
+		variables: { id: props.bookid },
+	});
+	if (loading) return <p>Loading...</p>;
+	if (error) return <p>Error :(</p>;
 
-    return (
-        <div id="book-details">
-            <h2>{data.book.name}</h2>
-            <h3>{data.book.genre}</h3>
-            <h3>{data.book.author.name}</h3>
-            <p>{data.book.author.name} also wrote </p>
-            <ul>
-                {data.book.author.books.map(book => {
-                    return (<li>{book.name},{book.genre}</li>)
-                })}
-            </ul>
-        </div>
-    );
+	return (
+		<div style={styles.details} id="book-details">
+			<text>Genre: {data.book.genre}</text>
+			<br />
+			<text>Author: {data.book.author.name}</text>
+			<br />
+            <br />
+			<text>Other books by author </text>
+			<ul>
+				{data.book.author.books.map((book) => {
+					return <li>{book.name}</li>;
+				})}
+			</ul>
+		</div>
+	);
 }
+
+const styles = {
+	details: {
+		color: "#66C9BF",
+	},
+};
 
 export default BookDetails;
