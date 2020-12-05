@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { getBookDetailsQuery } from "../queries/queries"
+import  React from "react";
 
 function BookDetails(props) {
     const { loading, error, data } = useQuery(getBookDetailsQuery, {
