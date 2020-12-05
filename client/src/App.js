@@ -7,7 +7,7 @@ import {  Navbar } from "react-bootstrap";
 const serverUrl = process.env.NODE_ENV === "production" ? process.env.REACT_APP_PROD_SERVER_URL : process.env.REACT_APP_DEV_SERVER_URL;
 
 const client = new ApolloClient({
-	uri: `${serverUrl}/graphql`,
+	uri: `/api/graphql`,
 	cache: new InMemoryCache(),
 });
 
