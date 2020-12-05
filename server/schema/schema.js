@@ -92,11 +92,11 @@ const Mutation = new GraphQLObjectType({
                 age: { type: new GraphQLNonNull(GraphQLInt) }
             },
             resolve(parent, args) {
-                let newAuthor = new Author({
+                const newAuthor = {
                     name: args.name,
                     age: args.age
-                })
-                return newAuthor.save();
+                }
+                return Author.findOneAndUpdate(newAuthor,newAuthor,{ upsert:true })
             }
         },
         addBook: {
@@ -107,12 +107,12 @@ const Mutation = new GraphQLObjectType({
                 authorId: { type: new GraphQLNonNull(GraphQLID) }
             },
             resolve(parent, args) {
-                let newBook = new Book({
+                const newBook = {
                     name: args.name,
                     genre: args.genre,
                     authorId: args.authorId
-                })
-                return newBook.save();
+                }
+                return Book.findOneAndUpdate(newBook,newBook,{upsert:true});
             }
         }
     }
