@@ -6,14 +6,13 @@ services:
     container_name: client
     build: 
       context: ./client/
-      dockerfile: Dockerfile-dev
+    image: registry.gitlab.com/mukeshsuthar/graphql-mern-docker/client:1.0
     volumes: 
-      - ./client:/graphql-book/client
+      - ./prod-config/nginx/nginx.conf:/etc/nginx/nginx.conf
     ports:
-      - 3000:3000
-    environment:
-      -   =development
-      - REACT_APP_PROD_SERVER_URL=http://localhost:9090
+      - 80:80
+    environment: 
+      - NODE_ENV=production
     networks: 
       - graphql
     restart: always
@@ -24,11 +23,10 @@ services:
     container_name: server
     build: 
       context: ./server/
-      dockerfile: Dockerfile-dev
-    ports: 
-      - 9090:9090
+      target: production
+    image: registry.gitlab.com/mukeshsuthar/graphql-mern-docker/server:1.0
     environment: 
-      - NODE_ENV=development
+      - NODE_ENV=production
     networks: 
       - graphql
     restart: always
@@ -36,12 +34,10 @@ services:
       - mongo
 
   mongo:
-    image: mongo:latest
+    image: registry.gitlab.com/mukeshsuthar/graphql-mern-docker/mongo:1.0
     container_name: mongo
     volumes:
       - ./mongo-volume:/data/db
-    ports: 
-      - 27017:27017
     networks: 
       - graphql
 

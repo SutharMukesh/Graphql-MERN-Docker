@@ -6,12 +6,12 @@ const schema = require("./schema/schema");
 require('dotenv').config()
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 9090;
 
 // Allow cross origin requests
 app.use(cors());
 
-const mongoUrl = (process.env.NODE_ENV === "production") ? "mongo:27017" : process.env.mongourl;
+const mongoUrl = (process.env.NODE_ENV === "production") ? "mongo:27017" : "localhost:27017";
 
 mongoose.connect(`mongodb://${mongoUrl}/booksDb`, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.connection.once('open', () => {
