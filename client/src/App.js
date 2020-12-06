@@ -4,6 +4,9 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import AddAuthor from "./components/AddAuthor";
 import React from "react";
 import { Navbar } from "react-bootstrap";
+import { ToastContainer, toast } from 'react-toastify';
+import '../node_modules/react-toastify/dist/ReactToastify.css';
+
 const serverUrl = process.env.NODE_ENV === "production" ? "/api" : "http://localhost:9090";
 
 const client = new ApolloClient({
@@ -16,6 +19,7 @@ function App() {
 		<ApolloProvider client={client}>
 			{/* <h1 id="header">Book shook</h1> */}
 			<div className="MainApp" style={styles.MainApp}>
+      <ToastContainer/>
 				<Navbar style={styles.Nav}>
 					<Navbar.Brand style={{ color: "#F92672" }}>B O O K - S H O O K</Navbar.Brand>
 				</Navbar>
@@ -35,8 +39,8 @@ function App() {
 const styles = {
 	Nav: {
 		backgroundColor: "#3E3D32",
-    justifyContent: "center",
-    boxShadow: "1px 2px 3px rgba(0,0,0,0.3)",
+		justifyContent: "center",
+		boxShadow: "1px 2px 3px rgba(0,0,0,0.3)",
 	},
 	App: {
 		display: "flex",
@@ -53,7 +57,7 @@ const styles = {
 	},
 
 	bottomOperations: {
-    marginBottom:"15px",
+		marginBottom: "15px",
 		display: "flex",
 		// position:"fixed",
 		// bottom:0,
@@ -61,6 +65,12 @@ const styles = {
 		alignItems: "flex-end",
 		flexDirection: "row",
 		flexWrap: "wrap",
-	},
+  },
+  toast:{
+    // top:"1em",
+    // right:"1em",
+    // zIndex:9999,
+    // position:"fixed"
+  }
 };
 export default App;

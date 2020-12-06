@@ -14,7 +14,7 @@ function BookList() {
 			{data.books.map((book) => {
 				return (
 					<OverlayTrigger
-						rootClose="true"
+						rootClose={true}
 						trigger="click"
 						placement="auto"
 						overlay={

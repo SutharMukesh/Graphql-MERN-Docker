@@ -19,7 +19,7 @@ function BookDetails(props) {
 			<text>Other books by author</text>
 			<ol>
 				{data.book.author.books.map((book) => {
-					return <li>{book.name}</li>;
+					return <li key={book.id}>{book.name}</li>;
 				})}
 			</ol>
 		</div>

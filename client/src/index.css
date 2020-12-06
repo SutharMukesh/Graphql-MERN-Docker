@@ -12,3 +12,11 @@
   border-top-color: #3E3D32;
 }
 
+.toastError {
+  background: #CF4649!important;
+}
+
+.toastSuccess {
+  background: #678830!important;
+}
+
