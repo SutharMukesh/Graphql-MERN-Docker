@@ -1,9 +1,0 @@
-FROM node:14-alpine AS builder
-
-RUN mkdir -p /graphql-book/client
-
-WORKDIR /graphql-book/client
-
-EXPOSE 3000
-
-CMD ["npm", "run", "start"]
