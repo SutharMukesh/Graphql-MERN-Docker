@@ -11,24 +11,25 @@ function BookDetails(props) {
 
 	return (
 		<div style={styles.details} id="book-details">
-			<text>Genre: {data.book.genre}</text>
+			<b>{data.book.author.name}</b>
 			<br />
-			<text>Author: {data.book.author.name}</text>
+			<i>{data.book.genre}</i>
 			<br />
             <br />
-			<text>Other books by author </text>
-			<ul>
+			<text>Other books by author</text>
+			<ol>
 				{data.book.author.books.map((book) => {
 					return <li>{book.name}</li>;
 				})}
-			</ul>
+			</ol>
 		</div>
 	);
 }
 
 const styles = {
 	details: {
-		color: "#66C9BF",
+		color: "#ADAFA6F",
+		paddingRight: "10px"
 	},
 };
 

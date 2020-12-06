@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 import React, { useState } from "react";
-import { Accordion, Button, Card, ListGroup } from "react-bootstrap";
+import { Accordion, Button, Card, ListGroup, OverlayTrigger, Popover } from "react-bootstrap";
 import { getBooksQuery } from "../queries/queries";
 import BookDetails from "./BookDetail";
 function BookList() {
@@ -10,55 +10,66 @@ function BookList() {
 	if (error) return <p>Error :(</p>;
 
 	return (
-			<Accordion id="book-list" style={styles.listGroup}>
-				{data.books.map((book) => {
-					return (
-						<Card style={styles.card}>
-							<div
-								className="card-header"
-								style={styles.cardHeader}
-								key={book.id}
-								style={styles.cardHeader}
-								data-toggle="collapse"
-								data-target={selectedBook}
-								aria-controls={selectedBook}
-								onClick={(e) => {
-									if (selectedBook == book.id) {
-										setSelectedBook("");
-									} else {
-										setSelectedBook(book.id);
-									}
-								}}
-							>
-								{book.name}
-							</div>
-							<div className={selectedBook == book.id ? "collapse show card-body" : "collapse card-body"}>
-								<BookDetails bookid={selectedBook}></BookDetails>
-							</div>
-						</Card>
-					);
-				})}
-			</Accordion>
+		<Accordion id="book-list" style={styles.listGroup}>
+			{data.books.map((book) => {
+				return (
+					<OverlayTrigger
+						rootClose="true"
+						trigger="click"
+						placement="auto"
+						overlay={
+							<Popover style={styles.popover} id="popover-basic">
+								<Popover.Content style={styles.popoverContent}>
+									<BookDetails bookid={selectedBook}></BookDetails>
+								</Popover.Content>
+							</Popover>
+						}
+					>
+						<Button
+							style={styles.button}
+							key={book.id}
+							onClick={(e) => {
+								if (selectedBook == book.id) {
+									setSelectedBook("");
+								} else {
+									setSelectedBook(book.id);
+								}
+							}}
+						>
+							{book.name}
+						</Button>
+					</OverlayTrigger>
+				);
+			})}
+		</Accordion>
 	);
 }
 
 const styles = {
 	listGroup: {
 		display: "flex",
-		flexDirection: "column",
-		justifyContent:"stretch",
-		padding: "20px",
-		width: "20rem"
+		flexDirection: "row",
+		flexWrap: "wrap",
+		padding: "20px"
 	},
-	card: {
+	button: {
+		backgroundColor: "#3E3D32",
+		boxShadow: "1px 2px 3px rgba(0,0,0,0.3)",
+		border: "1px solid #3E3D32",
+		margin: "5px",
+		padding:"10px",
+		color: "#ADAFA6",
+	},
+	popover: {
 		backgroundColor: "#3E3D32",
 		boxShadow: "1px 2px 3px rgba(0,0,0,0.3)",
 		border: "1px solid #3E3D32",
 		margin: "5px",
 	},
-	cardHeader: {
+	popoverContent:{
+		backgroundColor: "#272822",
 		padding: "10px",
-		color: "#66C9BF",
-	},
+		color: "#ADAFA6",
+	}
 };
 export default BookList;

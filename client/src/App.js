@@ -16,13 +16,13 @@ function App() {
 		<ApolloProvider client={client}>
 			{/* <h1 id="header">Book shook</h1> */}
 			<div className="MainApp" style={styles.MainApp}>
-				<Navbar style={{ backgroundColor: "#3E3D32", justifyContent: "center" }}>
-					<Navbar.Brand style={{ color: "#F92672" }}>Book Shook</Navbar.Brand>
+				<Navbar style={styles.Nav}>
+					<Navbar.Brand style={{ color: "#F92672" }}>B O O K - S H O O K</Navbar.Brand>
 				</Navbar>
 				<div className="container" style={styles.App}>
 					<BookList />
 					<br />
-					<div style={styles.bottomOperations} data-spy="scroll">
+					<div style={styles.bottomOperations}>
 						<AddBook />
 						<AddAuthor />
 					</div>
@@ -33,27 +33,34 @@ function App() {
 }
 
 const styles = {
+	Nav: {
+		backgroundColor: "#3E3D32",
+    justifyContent: "center",
+    boxShadow: "1px 2px 3px rgba(0,0,0,0.3)",
+	},
 	App: {
 		display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column"
+		justifyContent: "center",
+		alignItems: "center",
+		flexDirection: "column",
+		backgroundColor: "#272822",
 	},
 	MainApp: {
 		fontFamily: "'Jetbrains Mono', 'Arial Narrow', Arial, sans-serif",
 		backgroundColor: "#272822",
-		height: "100%",
+		height: "100vh",
 		lineHeight: 1.2,
 	},
 
 	bottomOperations: {
-    display: "flex",
-    // position:"fixed",
-    // bottom:0,
-    justifyContent:"center",
-    alignItems: "flex-end",
-    flexDirection: "row",
-    flexWrap:"wrap"
-	}
+    marginBottom:"15px",
+		display: "flex",
+		// position:"fixed",
+		// bottom:0,
+		justifyContent: "center",
+		alignItems: "flex-end",
+		flexDirection: "row",
+		flexWrap: "wrap",
+	},
 };
 export default App;

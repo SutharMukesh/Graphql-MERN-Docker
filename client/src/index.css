@@ -1,54 +1,14 @@
-form{
-  background:#3E3D32;
-  padding:10px;
-  width: 25rem;
-  margin: 2px;
-  position: relative;
-  border-radius: 4px;
-  color: #66C9BF;
+
+.popover[x-placement^=right] .arrow::after {
+  border-right-color: #3E3D32;
+}
+.popover[x-placement^=left] .arrow::after {
+  border-left-color: #3E3D32;
+}
+.popover[x-placement^=bottom] .arrow::after {
+  border-bottom-color: #3E3D32;
+}
+.popover[x-placement^=top] .arrow::after {
+  border-top-color: #3E3D32;
 }
 
-form .field{
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  padding-bottom: 10px;
-}
-form label{
-  text-align: right;
-}
-form select,form input{
-  /* padding: 5px; */
-  /* box-sizing: border-box; */
-}
-form button{
-  border-radius: 50%;
-  position: absolute;
-  color: #3E3D32;
-  font-size: 2em;
-  bottom: 0;
-  left: 0;
-  border: 0;
-  padding: 0 10px;
-  margin: 10px;
-  background: #F92672;
-  cursor: pointer;
-  /* position: absolute; */
-  /* bottom: 10px; */
-}
-
-
-input{
-  background-color: #272822;
-  color: #66C9BF;
-}
-
-select{
-  background-color:#272822;
-  color: #66C9BF;
-}
-
-option{
-  background-color:#272822;
-  color: #66C9BF;
-}
