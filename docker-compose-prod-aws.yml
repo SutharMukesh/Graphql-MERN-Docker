@@ -4,8 +4,6 @@ services:
 
   client:
     container_name: client
-    build: 
-      context: ./client/
     image: 761742206819.dkr.ecr.ap-south-1.amazonaws.com/bookshook-client:1.0
     volumes: 
       - ./prod-config/nginx/nginx.conf:/etc/nginx/nginx.conf
@@ -16,28 +14,43 @@ services:
     networks: 
       - graphql
     restart: always
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: bookshook
+        awslogs-region: ap-south-1
+        awslogs-stream-prefix: client
     depends_on: 
       - server
   
   server:
     container_name: server
-    build: 
-      context: ./server/
-      target: production
     image: 761742206819.dkr.ecr.ap-south-1.amazonaws.com/bookshook-server:1.0
     environment: 
       - NODE_ENV=production
     networks: 
       - graphql
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: bookshook
+        awslogs-region: ap-south-1
+        awslogs-stream-prefix: server
     restart: always
     depends_on: 
       - mongo
 
   mongo:
-    image: registry.gitlab.com/mukeshsuthar/graphql-mern-docker/mongo:1.0
+    image: mongo
     container_name: mongo
     volumes:
       - ./mongo-volume:/data/db
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: bookshook
+        awslogs-region: ap-south-1
+        awslogs-stream-prefix: mongo
     networks: 
       - graphql
 

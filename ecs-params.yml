@@ -1,0 +1,15 @@
+version: 1
+task_definition:
+  services:
+    client:
+      cpu_shares: 256
+      mem_limit: 0.2GB
+      mem_reservation: 0.2GB
+    server:
+      cpu_shares: 256
+      mem_limit: 0.5GB
+      mem_reservation: 0.2GB
+    mongo:
+      cpu_shares: 256
+      mem_limit: 0.3GB
+      mem_reservation: 0.2GB
